@@ -2,12 +2,10 @@ var socket = io();
 socket.on('connect', function() {
     console.log('connected to server');
 
-    socket.emit('createMessage', {
-        from:"webble@gmail.com",
-        text:"ive joined the chat room"
-    });
-
-
+    socket.on('welcome', function(welcome){
+        console.log(`from: ${welcome.from} --
+        ${welcome.text} -- ${welcome.createdAt}`
+    )});
 
 });
 socket.on('disconnect', function(){
